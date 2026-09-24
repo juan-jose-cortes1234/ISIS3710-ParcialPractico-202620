@@ -19,7 +19,7 @@ export default function UserMenu() {
     return (
       <div className="flex items-center gap-6">
         <div className="bg-blue-600 text-white text-lg font-semibold rounded-xl px-6 py-3 cursor-pointer">
-          + Crear Plan
+          <Link href="/plans/create">+ Crear Plan</Link>
         </div>
         <div className="flex items-center gap-3 border-l border-slate-200 pl-6">
           <svg

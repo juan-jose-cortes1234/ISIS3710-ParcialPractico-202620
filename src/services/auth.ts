@@ -1,3 +1,5 @@
+import { getSession } from "./session";
+
 // La URL del back se configura en el archivo .env.local (ver .env.example)
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -29,6 +31,30 @@ export async function register(
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ userName: username, email, name, password }),
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "No se pudo crear la cuenta");
+  }
+
+  return data.id;
+}
+
+export async function createPlan(
+  name: string,
+  description: string,
+  estimatedPrice: number,
+  estimatedTime: number,
+  recomendations: string,
+  address: string,
+  image: string
+) {
+  const response = await fetch(`${API_URL}/plans`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, description, estimatedPrice, estimatedTime, recomendations, address, image, userId: getSession().id }),
   });
 
   const data = await response.json();

@@ -3,7 +3,6 @@ import { getPlans } from "@/services/plans";
 
 export default async function PlansPage() {
   const plans = await getPlans();
-
   return (
     <div className="flex-1 bg-slate-50 px-24 py-16">
       <h1 className="text-5xl font-bold text-slate-900">Explorar planes</h1>
