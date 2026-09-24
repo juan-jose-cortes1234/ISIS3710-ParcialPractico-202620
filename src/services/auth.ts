@@ -54,7 +54,7 @@ export async function createPlan(
   const response = await fetch(`${API_URL}/plans`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, description, estimatedPrice, estimatedTime, recomendations, address, image, userId: getSession().id }),
+    body: JSON.stringify({ name, description, estimatedPrice, estimatedTime, recomendations, address, image, userId: getSession()["id"] }),
   });
 
   const data = await response.json();
